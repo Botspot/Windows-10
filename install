@@ -1,0 +1,55 @@
+#!/bin/bash
+echo "Windows 10 transformation script
+Designed by Botspot
+"
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd $DIR
+
+echo "Installing $DIR/root"
+sleep 1
+
+if [ -d $DIR/backup/home ];then
+  echo "WARNING! It appears there"\'"s already a backup at $DIR/backup. If you continue, it will be overwritten. Continue? [Y/n]"
+  read answer
+  if [ $answer == 'n' ];then
+    echo "OK, exiting now."
+    exit 0
+  fi
+fi
+
+echo "Backing up config files"
+cd $DIR/root
+cp --parents -a $(find home/pi/.config -type f | sed -e 's#^#/#' | tr '\n' ' ' ) $DIR/backup  &>/dev/null
+cd
+
+echo "Copying the new files in"
+sudo cp -a ${DIR}/root/. /
+
+echo "adding autostart lines"
+#remove any previous instances to prevent double lines
+sed -i '/win10/d' /etc/xdg/lxsession/LXDE-pi/autostart
+#add the lines
+echo "$DIR/runonstartup #win10 added this" >> /etc/xdg/lxsession/LXDE-pi/autostart
+
+echo "Installing composite manager, GTK engine, and tint2"
+echo ""
+echo ""
+sudo apt install xcompmgr tint2 gtk2-engines-murrine -y --no-install-recommends
+echo ""
+echo ""
+echo "Installation complete. Refreshing desktop session now, but rebooting is recommended."
+xcompmgr -C -c -o 0.5 -l -19 -t -10 -r 14 -f -O 0.05 -I 0.05 &>/dev/null &
+sudo update-icon-caches /usr/share/icons/*
+lxpanelctl restart
+openbox --restart
+killall tint2 pcmanfm
+rm -r /home/pi/.cache/tint2
+tint2 &>/dev/null &
+pcmanfm --desktop --profile LXDE-pi &>/dev/null &
+sleep 3
+zenity --info --text="Have a look around.\nPlease let me know if there is anything I can improve. \n\n -Botspot" --icon-name=emblem-default --ellipsize &>/dev/null &
+
+sleep 5
+exit 0
+

@@ -1,0 +1,4 @@
+#!/bin/bash
+sleep 5
+tint2 &
+xcompmgr -C -c -o 0.5 -l -19 -t -10 -r 14 -f -O 0.05 -I 0.05 &

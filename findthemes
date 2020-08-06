@@ -1,0 +1,12 @@
+
+#get saved widget theme
+cat /home/pi/.config/lxsession/LXDE-pi/desktop.conf | grep sNet/ThemeName | tr '=' '\n' | tail -1
+
+#get saved icon theme
+cat /home/pi/.config/lxsession/LXDE-pi/desktop.conf | grep sNet/IconThemeName | tr '=' '\n' | tail -1
+
+#get saved mouse theme
+cat /home/pi/.config/lxsession/LXDE-pi/desktop.conf | grep sGtk/CursorThemeName | tr '=' '\n' | tail -1
+
+#get saved window border theme
+cat /home/pi/.config/openbox/lxde-pi-rc.xml | head -n100 | tr '\n<>' '\n' | grep theme -A 4 | tail +5
