@@ -1,0 +1,125 @@
+# lxpanel <profile> config file. Manually editing is not recommended.
+# Use preference dialog in lxpanel to adjust config when you can.
+
+Global {
+  edge=bottom
+  align=left
+  margin=0
+  widthtype=percent
+  width=100
+  height=40
+  transparent=1
+  tintcolor=#1b2538
+  alpha=255
+  autohide=0
+  heightwhenhidden=2
+  setdocktype=1
+  setpartialstrut=1
+  usefontcolor=0
+  fontsize=12
+  fontcolor=#ffffff
+  usefontsize=0
+  background=0
+  backgroundfile=/usr/share/lxpanel/images/background.png
+  iconsize=16
+  monitor=0
+  point_at_menu=0
+}
+Plugin {
+  type=menu
+  Config {
+    padding=14
+    image=start-here
+    system {
+    }
+    separator {
+    }
+    item {
+      image=system-run
+      command=run
+    }
+    separator {
+    }
+    item {
+      image=system-shutdown
+      command=logout
+    }
+  }
+}
+Plugin {
+  type=taskbar
+  expand=1
+  Config {
+    tooltips=0
+    IconsOnly=0
+    ShowAllDesks=0
+    UseMouseWheel=1
+    UseUrgencyHint=1
+    FlatButton=0
+    MaxTaskWidth=36
+    spacing=1
+    GroupedTasks=0
+  }
+}
+Plugin {
+  type=ejecter
+  Config {
+    AutoHide=1
+  }
+}
+Plugin {
+  type=bluetooth
+  Config {
+  }
+}
+Plugin {
+  type=dhcpcdui
+  Config {
+  }
+}
+Plugin {
+  type=volumealsabt
+  Config {
+  }
+}
+Plugin {
+  type=thermal
+  Config {
+    NormalColor=#ffffff
+    Warning1Color=#fff000
+    Warning2Color=#ff0000
+    AutomaticLevels=0
+    Warning1Temp=70
+    Warning2Temp=80
+    AutomaticSensor=1
+  }
+}
+Plugin {
+  type=monitors
+  Config {
+    DisplayCPU=1
+    DisplayRAM=1
+    CPUColor=#0175D4
+    RAMColor=#0175D4
+  }
+}
+Plugin {
+  type=dclock
+  Config {
+    ClockFmt=%l:%M:%S%n  %m/%d
+    TooltipFmt=%A %x
+    BoldFont=0
+    IconOnly=0
+    CenterText=0
+  }
+}
+Plugin {
+  type=ptbatt
+  Config {
+  }
+}
+Plugin {
+  type=wincmd
+  Config {
+  }
+}

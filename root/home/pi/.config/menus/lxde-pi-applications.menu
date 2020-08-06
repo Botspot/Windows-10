@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<!DOCTYPE Menu
+  PUBLIC '-//freedesktop//DTD Menu 1.0//EN'
+  'http://standards.freedesktop.org/menu-spec/menu-1.0.dtd'>
+<Menu>
+	<Name>Applications</Name>
+	<MergeFile type="parent">/etc/xdg/menus/lxde-pi-applications.menu</MergeFile>
+	<Menu>
+		<Name>DesktopSettings</Name>
+		<Include>
+			<Filename>lxappearance.desktop</Filename>
+		</Include>
+		<AppDir>/home/pi/.local/share/applications</AppDir>
+	</Menu>
+	<Menu>
+		<Name>System</Name>
+		<Exclude>
+			<Filename>tint2.desktop</Filename>
+		</Exclude>
+		<AppDir>/home/pi/.local/share/applications</AppDir>
+	</Menu>
+</Menu>
