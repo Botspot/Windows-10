@@ -20,7 +20,8 @@ fi
 
 echo "Backing up config files"
 cd $DIR/root
-cp --parents -a $(find home/pi/.config -type f | sed -e 's#^#/#' | tr '\n' ' ' ) $DIR/backup  &>/dev/null
+mkdir $DIR/backup
+cp --parents -a $(find home/pi/.config -type f | sed -e 's#^#/#' | tr '\n' ' ' ) $DIR/backup &>/dev/null
 cd
 
 echo "Copying the new files in"
@@ -46,6 +47,7 @@ openbox --restart
 killall tint2 pcmanfm &>/dev/null
 rm -r /home/pi/.cache/tint2 &>/dev/null
 tint2 &>/dev/null &
+sleep 3
 pcmanfm --desktop --profile LXDE-pi &
 sleep 3
 zenity --info --text="Have a look around.\nPlease let me know if there is anything I can improve. \n\n -Botspot" --icon-name=emblem-default --ellipsize &>/dev/null &
