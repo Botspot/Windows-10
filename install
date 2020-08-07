@@ -43,10 +43,10 @@ xcompmgr -C -c -o 0.5 -l -19 -t -10 -r 14 -f -O 0.05 -I 0.05 &>/dev/null &
 sudo update-icon-caches /usr/share/icons/*
 lxpanelctl restart
 openbox --restart
-killall tint2 pcmanfm
-rm -r /home/pi/.cache/tint2
+killall tint2 pcmanfm &>/dev/null
+rm -r /home/pi/.cache/tint2 &>/dev/null
 tint2 &>/dev/null &
-pcmanfm --desktop --profile LXDE-pi &>/dev/null &
+pcmanfm --desktop --profile LXDE-pi &
 sleep 3
 zenity --info --text="Have a look around.\nPlease let me know if there is anything I can improve. \n\n -Botspot" --icon-name=emblem-default --ellipsize &>/dev/null &
 
