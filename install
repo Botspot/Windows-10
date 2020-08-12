@@ -20,8 +20,7 @@ fi
 
 echo "Backing up config files"
 cd $DIR/root
-mkdir $DIR/backup
-cp --parents -a $(find home/pi/.config -type f | sed -e 's#^#/#' | tr '\n' ' ' ) $DIR/backup &>/dev/null
+cp --parents -a $(find home/pi/.config -type f | sed -e 's#^#/#' | tr '\n' ' ' ) $DIR/backup  &>/dev/null
 cd
 
 echo "Copying the new files in"
@@ -44,11 +43,13 @@ xcompmgr -C -c -o 0.5 -l -19 -t -10 -r 14 -f -O 0.05 -I 0.05 &>/dev/null &
 sudo update-icon-caches /usr/share/icons/*
 lxpanelctl restart
 openbox --restart
-killall tint2 pcmanfm &>/dev/null
+killall tint2 pcmanfm lxpanel &>/dev/null
 rm -r /home/pi/.cache/tint2 &>/dev/null
 tint2 &>/dev/null &
-sleep 3
-pcmanfm --desktop --profile LXDE-pi &
+sleep 1
+pcmanfm --desktop --profile LXDE-pi &>/dev/null &
+sleep 1
+lxpanel --profile LXDE-pi &
 sleep 3
 zenity --info --text="Have a look around.\nPlease let me know if there is anything I can improve. \n\n -Botspot" --icon-name=emblem-default --ellipsize &>/dev/null &
 

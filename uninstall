@@ -3,7 +3,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $DIR
 echo "Uninstalling from $DIR"
 echo ""
-killall xcompmgr tint2 pcmanfm
+killall xcompmgr tint2
 echo "Removing themes and window border"
 sudo rm -r /usr/share/themes/Windows-10
 sudo rm -r /usr/share/themes/Windows-10-2
@@ -28,6 +28,8 @@ sudo apt purge xcompmgr gtk2-engines-murrine tint2 -y
 echo ""
 echo ""
 echo "Uninstallation complete. Refreshing desktop."
-lxpanelctl restart 
+killall pcmanfm lxpanel
+lxpanel --profile LXDE-pi &
+sleep 3
 openbox --restart
 pcmanfm --desktop --profile LXDE-pi &>/dev/null &
