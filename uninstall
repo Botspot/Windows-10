@@ -22,11 +22,11 @@ echo "Removing composite manager and GTK engine"
 #remove applicable lines pertaining to tint2 and xcompmgr
 sed -i '/win10/d' /etc/xdg/lxsession/LXDE-pi/autostart
 
-echo ""
-echo ""
-sudo apt purge xcompmgr gtk2-engines-murrine tint2 -y
-echo ""
-echo ""
+#echo ""
+#echo ""
+#sudo apt purge xcompmgr gtk2-engines-murrine tint2 -y
+#echo ""
+#echo ""
 echo "Uninstallation complete. Refreshing desktop."
 killall pcmanfm lxpanel
 lxpanel --profile LXDE-pi &
