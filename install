@@ -19,18 +19,13 @@ if [ -d $DIR/backup/home ];then
 fi
 
 echo "Backing up config files"
+mkdir -p $DIR/backup
 cd $DIR/root
 cp --parents -a $(find home/pi/.config -type f | sed -e 's#^#/#' | tr '\n' ' ' ) $DIR/backup  &>/dev/null
 cd
 
 echo "Copying the new files in"
 sudo cp -a ${DIR}/root/. /
-
-echo "adding autostart lines"
-#remove any previous instances to prevent double lines
-sed -i '/win10/d' /etc/xdg/lxsession/LXDE-pi/autostart
-#add the lines
-echo "$DIR/runonstartup #win10 added this" >> /etc/xdg/lxsession/LXDE-pi/autostart
 
 echo "Installing composite manager, GTK engine, and tint2"
 echo ""
@@ -42,16 +37,28 @@ echo "Installation complete. Refreshing desktop session now, but rebooting is re
 xcompmgr -C -c -o 0.5 -l -19 -t -10 -r 14 -f -O 0.05 -I 0.05 &>/dev/null &
 sudo update-icon-caches /usr/share/icons/*
 sleep 1
-openbox --restart
+openbox --restart &>/dev/null
 killall tint2 pcmanfm lxpanel &>/dev/null
 rm -r /home/pi/.cache/tint2 &>/dev/null
 sleep 5
 tint2 &>/dev/null &
 sleep 1
-pcmanfm --desktop --profile LXDE-pi &>/dev/null &
+lxpanel --profile LXDE-pi &>/dev/null &
+sleep 2
+
+openbox --restart &>/dev/null
 sleep 1
-lxpanel --profile LXDE-pi &
-sleep 3
+pcmanfm --desktop --profile LXDE-pi &>/dev/null &
+sleep 2
+
+if [ -f /usr/bin/conky ];then
+  echo 'restarting conky'
+  killall conky
+  sleep 1
+  conky &>/dev/null &
+  sleep 1
+fi
+
 zenity --info --text="Have a look around.\nPlease let me know if there is anything I can improve. \n\n -Botspot" --icon-name=emblem-default --ellipsize &>/dev/null &
 
 sleep 5
