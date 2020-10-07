@@ -34,7 +34,6 @@ sudo apt install xcompmgr tint2 gtk2-engines-murrine -y --no-install-recommends
 echo ""
 echo ""
 echo "Installation complete. Refreshing desktop session now, but rebooting is recommended."
-xcompmgr -C -c -o 0.5 -l -19 -t -10 -r 14 -f -O 0.05 -I 0.05 &>/dev/null &
 sudo update-icon-caches /usr/share/icons/*
 sleep 1
 openbox --restart &>/dev/null
@@ -50,6 +49,9 @@ openbox --restart &>/dev/null
 sleep 1
 pcmanfm --desktop --profile LXDE-pi &>/dev/null &
 sleep 2
+
+xcompmgr -C -c -o 0.5 -l -19 -t -10 -r 14 -f -O 0.05 -I 0.05 &>/dev/null &
+sleep 1
 
 if [ -f /usr/bin/conky ];then
   echo 'restarting conky'
