@@ -1,0 +1,2 @@
+[Desktop Entry]
+exec=/bin/bash -c 'sleep 5 && tint2'
