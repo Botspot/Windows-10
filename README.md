@@ -2,6 +2,8 @@
 Make Raspberry Pi OS look as close to Windows 10 as possible.
 Installs an icon theme, GTK theme, mouse cursor, openbox theme, xcompmgr, and custom panel.
 
+[![badge](https://github.com/Botspot/pi-apps/blob/master/icons/badge.png?raw=true)](https://github.com/Botspot/pi-apps)
+
 To download:
 
     git clone https://github.com/Botspot/Windows-10
