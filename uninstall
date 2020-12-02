@@ -5,12 +5,12 @@ echo "Uninstalling from $DIR"
 echo ""
 killall xcompmgr tint2
 echo "Removing themes and window border"
-sudo rm -r /usr/share/themes/Windows-10
-sudo rm -r /usr/share/themes/Windows-10-2
+sudo rm -rf /usr/share/themes/Windows-10
+sudo rm -rf /usr/share/themes/Windows-10-2
 echo "Removing icons and mouse pointer"
-sudo rm -r /usr/share/icons/Windows-10
+sudo rm -rf /usr/share/icons/Windows-10
 echo "Removing fonts"
-sudo rm -r "/usr/share/fonts/truetype/Google Sans"
+sudo rm -rf "/usr/share/fonts/Google Sans"
 echo "Removing config files"
 cd $DIR/root
 rm $(find home/pi/.config -type f | sed -e 's#^#/#' | tr '\n' ' ' ) $DIR/backup &>/dev/null
@@ -19,17 +19,27 @@ echo "Restoring original config files"
 sudo cp -a $DIR/backup/. /
 echo "Removing composite manager and GTK engine"
 
-#remove applicable lines pertaining to tint2 and xcompmgr
-sed -i '/win10/d' /etc/xdg/lxsession/LXDE-pi/autostart
-
-echo ""
-echo ""
-sudo apt purge xcompmgr gtk2-engines-murrine tint2 -y
-echo ""
-echo ""
+#echo ""
+#echo ""
+#sudo apt purge xcompmgr gtk2-engines-murrine tint2 -y
+#echo ""
+#echo ""
 echo "Uninstallation complete. Refreshing desktop."
-killall pcmanfm lxpanel
-lxpanel --profile LXDE-pi &
+killall pcmanfm lxpanel &>/dev/null
+sleep 5
+lxpanel --profile LXDE-pi &>/dev/null &
 sleep 3
-openbox --restart
+
+openbox --restart &>/dev/null
 pcmanfm --desktop --profile LXDE-pi &>/dev/null &
+openbox --restart &>/dev/null
+
+if [ -f /usr/bin/conky ];then
+  killall conky
+  sleep 1
+  conky &>/dev/null &
+  sleep 1
+fi
+
+echo "removing backup"
+gio trash $DIR/backup

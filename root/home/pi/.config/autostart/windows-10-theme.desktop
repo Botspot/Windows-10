@@ -1,0 +1,3 @@
+[Desktop Entry]
+Name=Autostart Tint2 panel on boot
+Exec=/bin/bash -c '~/Windows-10/runonstartup'
