@@ -21,7 +21,7 @@ fi
 echo "Backing up config files"
 mkdir -p $DIR/backup
 cd $DIR/root
-cp --parents -a $(find home/pi/.config -type f | sed -e 's#^#/#' | tr '\n' ' ' ) $DIR/backup  &>/dev/null
+cp --parents -a $(find $HOME/.config -type f | sed -e 's#^#/#' | tr '\n' ' ' ) $DIR/backup  &>/dev/null
 cd
 
 echo "Copying the new files in"
@@ -38,7 +38,7 @@ sudo update-icon-caches /usr/share/icons/*
 sleep 1
 openbox --restart &>/dev/null
 killall tint2 pcmanfm lxpanel &>/dev/null
-rm -r /home/pi/.cache/tint2 &>/dev/null
+rm -r ~/.cache/tint2 &>/dev/null
 sleep 5
 tint2 &>/dev/null &
 sleep 1
