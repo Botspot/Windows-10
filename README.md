@@ -1,22 +1,22 @@
-# Windows 10 Transformation Theme for RaspiOS
-Make Raspberry Pi OS look as close to Windows 10 as possible.
+# Windows 8 Transformation Theme for RaspiOS
+Make Raspberry Pi OS look as close to Windows 8 as possible.
 Installs an icon theme, GTK theme, mouse cursor, openbox theme, xcompmgr, and custom panel.
 
 [![badge](https://github.com/Botspot/pi-apps/blob/master/icons/badge.png?raw=true)](https://github.com/Botspot/pi-apps)
 
 To download:
 
-    git clone https://github.com/Botspot/Windows-10
+    git clone https://github.com/C-EO/Windows-8
     
 To install:
     
-    /home/pi/Windows-10/install
+    /home/pi/Windows-8/install
 
 To uninstall:
 
-    /home/pi/Windows-10/uninstall
+    /home/pi/Windows-8/uninstall
     sudo apt purge xcompmgr gtk2-engines-murrine tint2 -y
-**Thanks to François for featuring this Windows 10 theme in [his blog](https://www.framboise314.fr/raspberry-pi-os-avec-un-look-de-windows-10/)!**
+**Thanks to François for featuring this Windows 8 theme in [his blog](https://www.framboise314.fr/raspberry-pi-os-avec-un-look-de-windows-10/)!**
 ## Credit:
 - The icon theme is originally from [the B00merang project](https://github.com/B00merang-Artwork/Windows-10). Customizations were added by [the TwisterOS team](https://twisteros.com/). Botspot further customized the icon theme to be compatible with Raspbian.
 - The GTK theme is based on [the B00merang project](https://github.com/B00merang-Project/Windows-10). Botspot heavily modified it to work best with Raspbian.
