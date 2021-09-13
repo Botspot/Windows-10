@@ -43,3 +43,4 @@ fi
 
 echo "removing backup"
 gio trash $DIR/backup
+exit 0
