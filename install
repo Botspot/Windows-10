@@ -27,12 +27,16 @@ cd
 echo "Copying the new files in"
 sudo cp -a ${DIR}/root/. /
 
-echo "Installing composite manager, GTK engine, and tint2"
-echo ""
-echo ""
-sudo apt install xcompmgr tint2 gtk2-engines-murrine -y --no-install-recommends
-echo ""
-echo ""
+if ! dpkg -l pi-apps-82e26f4f &>/dev/null ;then
+  echo "Installing composite manager, GTK engine, and tint2"
+  echo ""
+  echo ""
+  sudo apt update
+  sudo apt install xcompmgr tint2 gtk2-engines-murrine -y --no-install-recommends
+  echo ""
+  echo ""
+fi
+
 echo "Installation complete. Refreshing desktop session now, but rebooting is recommended."
 sudo update-icon-caches /usr/share/icons/*
 sleep 1
