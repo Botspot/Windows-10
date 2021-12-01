@@ -10,12 +10,13 @@ To download:
     
 To install:
     
-    /home/pi/Windows-10/install
+    ~/Windows-10/install
 
 To uninstall:
 
-    /home/pi/Windows-10/uninstall
+    ~/Windows-10/uninstall
     sudo apt purge xcompmgr gtk2-engines-murrine tint2 -y
+    
 **Thanks to François for featuring this Windows 10 theme in [his blog](https://www.framboise314.fr/raspberry-pi-os-avec-un-look-de-windows-10/)!**
 ## Credit:
 - The icon theme is originally from [the B00merang project](https://github.com/B00merang-Artwork/Windows-10). Customizations were added by [the TwisterOS team](https://twisteros.com/). Botspot further customized the icon theme to be compatible with Raspbian.
