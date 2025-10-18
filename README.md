@@ -1,3 +1,5 @@
+# IMPORTANT NOTE: Don't try this unless you are using legacy Pi OS with openbox, lxpanel, and LXDE!! See [#17](https://github.com/Botspot/Windows-10/issues/17)
+
 # Windows 10 Transformation Theme for RaspiOS
 Make Raspberry Pi OS look as close to Windows 10 as possible.
 Installs an icon theme, GTK theme, mouse cursor, openbox theme, xcompmgr, and custom panel.
